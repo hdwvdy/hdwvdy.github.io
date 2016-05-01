@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<script type="text/javascript" src="jquery.js">
+</script>
+<script type="text/javascript" src="jquery-ui-1.10.4.custom.min.js">
+</script>
+<script type="text/javascript">
+$(document).ready(function(){
+var inputs = document.getElementsByTagName('input');
+for (a = 0; a < inputs.length; a++) {
+if (inputs[a].type == "checkbox") {
+var id = inputs[a].getAttribute("id");
+if (id==null){
+id=  "checkbox" +a;
+}
+inputs[a].setAttribute("id",id);
+var container = document.createElement('div');
+container.setAttribute("class", "ttr_checkbox");
+var label = document.createElement('label');
+label.setAttribute("for", id);
+$(inputs[a]).wrap(container).after(label);
+}
+}
+});
+</script>
+<script type="text/javascript">
+$(document).ready(function(){
+var inputs = document.getElementsByTagName('input');
+for (a = 0; a < inputs.length; a++) {
+if (inputs[a].type == "radio") {
+var id = inputs[a].getAttribute("id");
+if (id==null){
+id=  "radio" +a;
+}
+inputs[a].setAttribute("id",id);
+var container = document.createElement('div');
+container.setAttribute("class", "ttr_radio");
+var label = document.createElement('label');
+label.setAttribute("for", id);
+$(inputs[a]).wrap(container).after(label);
+}
+}
+});
+</script>
+<script type="text/javascript" src="tt_slideshow.js">
+</script>
+<script type="text/javascript">
+$(document).ready(function(){
+$('#ttr_slideshow_inner').TTSlider({
+slideShowSpeed:2000,cssPrefix: 'ttr_'
+});
+});
+</script>
+<script type="text/javascript" src="bootstrap.min.js">
+</script>
+<script type="text/javascript">
+$(document).ready(function(){
+var window_height =  Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+var body_height = $(document.body).height();
+$content = $("#ttr_content_and_sidebar_container");
+if(body_height < window_height){
+differ = (window_height - body_height);
+content_height = $content.height() + differ;
+$("#ttr_content_and_sidebar_container").css("min-height", content_height+"px");
+}
+});
+</script>
+<script type="text/javascript">
+$(document).ready(function(){
+$('#nav-expander').on('click',function(e){
+e.preventDefault();
+$('body').toggleClass('nav-expanded');
+});
+});
+</script>
+<script type="text/javascript">
+$(document).ready(function(){
+$('ul.ttr_menu_items.nav li [data-toggle=dropdown]').on('click', function() {
+var window_width =  Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+if(window_width > 1025){
+window.location.href = jQuery(this).attr('href'); 
+}
+});
+});
+</script>
+<script type="text/javascript">
+$(document).ready(function(){
+$('ul.ttr_vmenu_items.nav li [data-toggle=dropdown]').on('click', function() {
+var window_width =  Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+if(window_width > 1025){
+window.location.href = jQuery(this).attr('href'); 
+}
+});
+});
+</script>
+<script type="text/javascript">
+$(document).ready(function(){
+$('.ttr_menu_items ul.dropdown-menu [data-toggle=dropdown]').on('click', function(event) { 
+var window_width =  Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+if(window_width < 1025){
+event.preventDefault();
+event.stopPropagation();
+$(this).parent().siblings().removeClass('open');
+$(this).parent().toggleClass(function() {
+if ($(this).is(".open") ) {
+window.location.href = $(this).children("[data-toggle=dropdown]").attr('href'); 
+return "";
+} else {
+return "open";
+}
+});
+}
+});
+});
+</script>
+<script type="text/javascript">
+$(document).ready(function(){
+$('.ttr_vmenu_items ul.dropdown-menu [data-toggle=dropdown]').on('click', function(event) { 
+var window_width =  Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+if(window_width < 1025){
+event.preventDefault();
+event.stopPropagation();
+$(this).parent().siblings().removeClass('open');
+$(this).parent().toggleClass(function() {
+if ($(this).is(".open") ) {
+window.location.href = $(this).children("[data-toggle=dropdown]").attr('href'); 
+return "";
+} else {
+return "open";
+}
+});
+}
+});
+});
+</script>
+<script type="text/javascript">
+$(document).ready(function(){
+var objects = ['iframe', 'video','object'];
+for(var i = 0 ; i < objects.length ; i++){
+if ($(objects[i]).length > 0) {
+$(objects[i]).addClass('embed-responsive-item');
+$(objects[i]).parent().addClass('embed-responsive embed-responsive-16by9');
+$(".embed-responsive-16by9").css("padding-bottom","56.25%");
+}
+}
+});
+</script>
+<script type="text/javascript">
+WebFontConfig = {
+google: { families: [ 'Capriola'] }
+};
+(function() {
+var wf = document.createElement('script');
+wf.src = ('https:' == document.location.protocol ? 'https' : 'http') + '://ajax.googleapis.com/ajax/libs/webfont/1.0.31/webfont.js';
+wf.type = 'text/javascript';
+wf.async = 'true';
+var s = document.getElementsByTagName('script')[0];
+s.parentNode.insertBefore(wf, s);
+})();
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>
+
+</title>
+<link rel="stylesheet"  href="bootstrap.css" type="text/css" media="screen"/>
+<link rel="stylesheet"  href="style.css" type="text/css" media="screen"/>
+<!--[if lte IE 8]>
+<link rel="stylesheet"  href="menuie.css" type="text/css" media="screen"/>
+<link rel="stylesheet"  href="vmenuie.css" type="text/css" media="screen"/>
+<![endif]-->
+<script type="text/javascript" src="prefixfree.min.js">
+</script>
+<script type="text/javascript" src="totop.js">
+</script>
+<!--[if IE 7]>
+<style type="text/css" media="screen">
+#ttr_vmenu_items  li.ttr_vmenu_items_parent {margin-left:-16px;font-size:0px;}
+</style>
+<![endif]-->
+<!--[if lt IE 9]>
+<script type="text/javascript" src="html5shiv.js">
+</script>
+<script type="text/javascript" src="respond.min.js">
+</script>
+<![endif]-->
+</head>
+<body class="Index">
+<a href="#" class="back-to-top"><img alt="Back to Top" src="images/gototop.png"/></a>
+<div id="ttr_page"class="container">
+<header id="ttr_header">
+<div id="ttr_header_inner">
+<a href="http://www.templatetoaster.com" class="headerforeground01">
+</a>
+<div class="ttr_title_position">
+<h1 class="ttr_title_style ">
+<a href="#">
+HONLAP CÍM
+</a>
+</h1>
+</div>
+</div>
+</header>
+<nav id="ttr_menu" class="navbar-default navbar">
+   <div id="ttr_menu_inner_in">
+<div class="menuforeground">
+</div>
+<div id="navigationmenu">
+<div class="navbar-header">
+<button id="nav-expander" data-target=".navbar-collapse" data-toggle="collapse" class="navbar-toggle" type="button">
+<span class="sr-only">
+</span>
+<span class="icon-bar">
+</span>
+<span class="icon-bar">
+</span>
+<span class="icon-bar">
+</span>
+</button>
+</div>
+<div class="menu-center collapse navbar-collapse">
+<ul class="ttr_menu_items nav navbar-nav nav-center">
+<li class="ttr_menu_items_parent dropdown active"><a href="index.html" class="ttr_menu_items_parent_link_active"><span class="menuchildicon"></span>Föoldal</a>
+<hr class ="horiz_separator"/>
+</li>
+<li class="ttr_menu_items_parent dropdown"><a href="#" class="ttr_menu_items_parent_link"><span class="menuchildicon"></span>Elsö oldal</a>
+<hr class ="horiz_separator"/>
+</li>
+<li class="ttr_menu_items_parent dropdown"><a href="#" class="ttr_menu_items_parent_link_arrow dropdown-toggle"data-toggle="dropdown"><span class="menuchildicon"></span>Második oldal</a>
+<ul class="child dropdown-menu" role="menu">
+<li  class="dropdown dropdown-submenu"><a href="#" class="subchild dropdown-toggle" data-toggle="dropdown"><span class="menuchildicon"></span>Lorem Ipsum 1</a>
+<hr class ="separator"/>
+<ul class="sub-menu" role="menu">
+<li><a href="#"><span class="menuchildicon"></span>Lorem Ipsum 1(a)</a>
+<hr class ="separator"/>
+</li>
+</ul>
+</li>
+<li  class="dropdown dropdown-submenu"><a href="#" class="subchild dropdown-toggle" data-toggle="dropdown"><span class="menuchildicon"></span>Lorem Ipsum 2</a>
+<hr class ="separator"/>
+<ul class="sub-menu" role="menu">
+<li><a href="#"><span class="menuchildicon"></span>Lorem Ipsum 2(a)</a>
+<hr class ="separator"/>
+</li>
+</ul>
+</li>
+<li  class="dropdown dropdown-submenu"><a href="#" class="subchild dropdown-toggle" data-toggle="dropdown"><span class="menuchildicon"></span>Lorem Ipsum 3</a>
+<hr class ="separator"/>
+<ul class="sub-menu" role="menu">
+<li><a href="#"><span class="menuchildicon"></span>Lorem Ipsum 3(a)</a>
+<hr class ="separator"/>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</nav>
+<div class="ttr_banner_slideshow">
+</div>
+<div class="ttr_slideshow">
+<div id="ttr_slideshow_inner">
+<div id="Slide0" class="ttr_slide" data-slideEffect="None">
+<div class="ttr_slideshow_last">
+</div>
+</div>
+<div id="Slide1" class="ttr_slide" data-slideEffect="None">
+<div class="ttr_slideshow_last">
+</div>
+</div>
+</div>
+<div class="ttr_slideshow_in">
+<div class="ttr_slideshow_last">
+<div id="nav"></div>
+</div>
+</div>
+</div>
+<div class="ttr_banner_slideshow">
+</div>
+<div id="ttr_content_and_sidebar_container">
+<div id="ttr_content">
+<div id="ttr_content_margin"class="container-fluid">
+<div style="height:0px;width:0px;overflow:hidden;-webkit-margin-top-collapse: separate;"></div>
+<div class="ttr_Index_html_row0 row">
+<div class="post_column col-lg-3 col-md-3 col-sm-3 col-xs-12">
+<div class="ttr_Index_html_column00">
+<div class="html_content" style="font-family:Times New Roman;font-size:12px;"><p><div style="float:Stretch;margin:0px 0px 0px 0px;font-family:Times New Roman;font-size:12px;"><p style="text-align:Center;font-family:Times New Roman;font-size:12px;"><img src="images/846.png" style="width:40px;height:40px;font-family:Times New Roman;font-size:12px;" /></p></div><br style="font-family:Times New Roman;font-size:12px;" /></p><p style="margin:0px 0px 10px 0px;text-align:Center;font-family:Times New Roman;font-size:12px;"><span style="font-family:&quot;Microsoft Tai Le&quot;;font-size:18px;">Első</span></p><p style="margin:0px 0px 10px 0px;text-align:Center;font-family:Times New Roman;font-size:12px;"><span style="font-family:&quot;Microsoft Tai Le&quot;;font-size:14px;color:#959595;">Lorem ipsum dolor sit amet, test link adipiscing elit. Nullam dignissim convallis est. Quisque aliquam. Donec faucibus. Nunc iaculis suscipit dui nurattor.</span></p></div>
+</div>
+</div>
+<div class="clearfix visible-xs-block">
+</div>
+<div class="post_column col-lg-3 col-md-3 col-sm-3 col-xs-12">
+<div class="ttr_Index_html_column01">
+<div class="html_content" style="font-family:Times New Roman;font-size:12px;"><p><div style="float:Stretch;margin:0px 0px 0px 0px;font-family:Times New Roman;font-size:12px;"><p style="text-align:Center;font-family:Times New Roman;font-size:12px;"><img src="images/847.png" style="width:40px;height:40px;font-family:Times New Roman;font-size:12px;" /></p></div><br style="font-family:Times New Roman;font-size:12px;" /></p><p style="margin:0px 0px 10px 0px;text-align:Center;font-family:Times New Roman;font-size:12px;"><span style="font-family:&quot;Microsoft Tai Le&quot;;font-size:18px;">Második</span></p><p style="margin:0px 0px 10px 0px;text-align:Center;font-family:Times New Roman;font-size:12px;"><span style="font-family:&quot;Microsoft Tai Le&quot;;font-size:14px;color:#959595;">Lorem ipsum dolor sit amet, test link adipiscing elit. Nullam dignissim convallis est.Quisque aliquam. Donec faucibus. Nunc iaculis suscipit dui nurattor.</span></p></div>
+</div>
+</div>
+<div class="clearfix visible-xs-block">
+</div>
+<div class="post_column col-lg-3 col-md-3 col-sm-3 col-xs-12">
+<div class="ttr_Index_html_column02">
+<div class="html_content" style="font-family:Times New Roman;font-size:12px;"><p><div style="float:Stretch;margin:0px 0px 0px 0px;font-family:Times New Roman;font-size:12px;"><p style="text-align:Center;font-family:Times New Roman;font-size:12px;"><img src="images/848.png" style="width:40px;height:40px;font-family:Times New Roman;font-size:12px;" /></p></div><br style="font-family:Times New Roman;font-size:12px;" /></p><p style="margin:0px 0px 10px 0px;text-align:Center;font-family:Times New Roman;font-size:12px;"><span style="font-family:&quot;Microsoft Tai Le&quot;;font-size:18px;color:#464A4C;">Harmadik</span></p><p style="margin:0px 0px 10px 0px;text-align:Center;font-family:Times New Roman;font-size:12px;"><span style="font-family:&quot;Microsoft Tai Le&quot;;font-size:14px;color:#959595;">Lorem ipsum dolor sit amet, test link adipiscing elit. Nullam dignissim convallis est.Quisque aliquam. Donec faucibus. Nunc iaculis suscipit dui nurattor.</span></p></div>
+</div>
+</div>
+<div class="clearfix visible-xs-block">
+</div>
+<div class="post_column col-lg-3 col-md-3 col-sm-3 col-xs-12">
+<div class="ttr_Index_html_column03">
+<div class="html_content" style="font-family:Times New Roman;font-size:12px;"><p><div style="float:Stretch;margin:0px 0px 0px 0px;font-family:Times New Roman;font-size:12px;"><p style="text-align:Center;font-family:Times New Roman;font-size:12px;"><img src="images/849.png" style="width:40px;height:40px;font-family:Times New Roman;font-size:12px;" /></p><br /><p style="margin:0px 0px 10px 0px;text-align:Center;line-height:28px;font-family:Times New Roman;font-size:12px;"><span style="font-family:&quot;Microsoft Tai Le&quot;;font-size:18px;color:#464A4C;">Negyedik</span></p><p style="margin:0px 0px 10px 0px;text-align:Center;font-family:Times New Roman;font-size:12px;"><span style="font-family:&quot;Microsoft Tai Le&quot;;font-size:14px;color:#959595;">Lorem ipsum dolor sit amet, test link adipiscing elit. Nullam dignissim convallis est.Quisque aliquam. Donec faucibus. Nunc iaculis suscipit dui nurattor.</span></p></div></p></div>
+</div>
+</div>
+<div class="clearfix visible-lg-block visible-sm-block visible-md-block visible-xs-block">
+</div>
+</div>
+<div class="ttr_Index_html_row1 row">
+<div class="post_column col-lg-6 col-md-6 col-sm-6 col-xs-12">
+<div class="ttr_Index_html_column10">
+<div class="html_content" style="font-family:Times New Roman;font-size:12px;"><p style="margin:0px 0px 0px 60px;font-family:Times New Roman;font-size:12px;"><img src="images/850.jpg" style="width:383px;height:490px;margin:0px 0px 0px 0px;font-family:Times New Roman;font-size:12px;" /></p></div>
+</div>
+</div>
+<div class="clearfix visible-xs-block">
+</div>
+<div class="post_column col-lg-6 col-md-6 col-sm-6 col-xs-12">
+<div class="ttr_Index_html_column11">
+<div class="html_content" style="font-family:Times New Roman;font-size:12px;"><p style="margin:0px 0px 10px 0px;line-height:49px;font-family:Times New Roman;font-size:12px;"><span style="font-family:&quot;Microsoft Tai Le&quot;;font-size:24px;color:#343434;">Címsor</span></p><p style="margin:0px 0px 10px 0px;font-family:Times New Roman;font-size:12px;"><div style="float:Left;width:65px;margin:10px 10px 0px 0px;padding:0px 0px 0px 0px;font-family:Times New Roman;font-size:12px;"><div><img src="images/851.jpg" style="width:65px;height:65px;margin:0px 0px 0px 0px;font-family:Times New Roman;font-size:12px;" /></div></div><span style="font-family:&quot;Microsoft Tai Le&quot;;font-size:20px;color:#4E4E4E;">Alcím1</span></p><p style="margin:0px 0px 10px 0px;font-family:Times New Roman;font-size:12px;"><span style="font-family:&quot;Microsoft Tai Le&quot;;font-size:14px;color:#B3B3B3;">Lorem ipsum dolor sit amet, test link adipiscing elit.Nullam dignissim convallis est.Quisque aliquam. Donec faucibus. Nunc iaculis suscipit dui</span></p><br style="margin:0px 0px 10px 0px;font-family:Times New Roman;font-size:12px;" /><p style="margin:0px 0px 10px 0px;font-family:Times New Roman;font-size:12px;"><div style="float:Left;width:65px;margin:10px 10px 0px 0px;padding:0px 0px 0px 0px;font-family:Times New Roman;font-size:12px;"><div><img src="images/852.jpg" style="width:65px;height:65px;margin:0px 0px 0px 0px;font-family:Times New Roman;font-size:12px;" /></div></div><span style="font-family:&quot;Microsoft Tai Le&quot;;font-size:20px;color:#4E4E4E;">Alcím2</span></p><p style="margin:0px 0px 10px 0px;font-family:Times New Roman;font-size:12px;"><span style="font-family:&quot;Microsoft Tai Le&quot;;font-size:14px;color:#B3B3B3;">Lorem ipsum dolor sit amet, test link adipiscing elit.Nullam dignissim convallis est.Quisque aliquam. Donec faucibus. Nunc iaculis suscipit dui</span></p><br style="margin:0px 0px 10px 0px;font-family:Times New Roman;font-size:12px;" /><p style="margin:0px 0px 10px 0px;font-family:Times New Roman;font-size:12px;"><div style="float:Left;width:65px;margin:10px 10px 0px 0px;padding:0px 0px 0px 0px;font-family:Times New Roman;font-size:12px;"><div><img src="images/853.jpg" style="width:65px;height:65px;margin:0px 0px 0px 0px;font-family:Times New Roman;font-size:12px;" /></div></div><span style="font-family:&quot;Microsoft Tai Le&quot;;font-size:20px;color:#4E4E4E;">Alcím3</span></p><p><span style="font-family:&quot;Microsoft Tai Le&quot;;font-size:14px;color:#B3B3B3;">Lorem ipsum dolor sit amet, test link adipiscing elit.Nullam dignissim convallis est.Quisque aliquam. Donec faucibus. Nunc iaculis suscipit dui</span></p></div>
+</div>
+</div>
+<div class="clearfix visible-lg-block visible-sm-block visible-md-block visible-xs-block">
+</div>
+</div>
+<div class="ttr_Index_html_row2 row">
+<div class="post_column col-lg-12 col-md-12 col-sm-12 col-xs-12">
+<div class="ttr_Index_html_column20">
+<div class="html_content" style="font-family:Times New Roman;font-size:12px;"><p style="text-align:Center;font-family:Times New Roman;font-size:12px;"><span style="font-family:&quot;Microsoft Tai Le&quot;;font-size:18px;color:#FFFFFF;">Lorem ipsum dolor sit amet, justo mentitum dignissim eos an. Eos modus commune et, ut eos velit cetero molestiae, sit everti detraxit hendrerit an. Tota detraxit evertitur est an, id salutatus efficiendi definitionem pro. At quo illud mundi necessitatibus, corpora ancillae disputationi et nam, id iudicabit efficiantur qui. Erat utroque fuisset his no. Duo ut exerci aperiam, nec eligendi appellantur vituperatoribus no. An modo hinc quando eum</span><span style="font-family:&quot;Microsoft Tai Le&quot;;color:#FFFFFF;font-size:12px;">.</span></p><br style="font-family:Times New Roman;font-size:12px;" /></div>
+</div>
+</div>
+<div class="clearfix visible-lg-block visible-sm-block visible-md-block visible-xs-block">
+</div>
+</div>
+<div class="ttr_Index_html_row3 row">
+<div class="post_column col-lg-12 col-md-3 col-sm-3 col-xs-12">
+<div class="ttr_Index_html_column30">
+<div class="html_content" style="font-family:Times New Roman;font-size:12px;"><p style="text-align:Center;font-family:Times New Roman;font-size:12px;"><span style="font-size:28px;color:#959595;font-family:Times New Roman;">Címsor</span></p></div>
+</div>
+</div>
+<div class="clearfix visible-lg-block visible-xs-block">
+</div>
+</div>
+<div class="ttr_Index_html_row4 row">
+<div class="post_column col-lg-3 col-md-3 col-sm-3 col-xs-12">
+<div class="ttr_Index_html_column40">
+<div class="html_content" style="font-family:Times New Roman;font-size:12px;"><p style="margin:20px 0px 0px 0px;font-family:Times New Roman;font-size:12px;"><img src="images/854.jpg" style="margin:0px 0px 0px 0px;font-family:Times New Roman;font-size:12px;" /></p><p style="margin:20px 0px 0px 0px;text-align:Center;font-family:Times New Roman;font-size:12px;"><span style="font-family:&quot;Microsoft Tai Le&quot;;font-size:16px;color:#343434;">Első</span></p><p style="margin:10px 0px 0px 0px;text-align:Center;font-family:Times New Roman;font-size:12px;"><span style="font-family:&quot;Microsoft Tai Le&quot;;font-size:14px;color:#B3B3B3;">Lorem ipsum dolor sit amet, test link adipiscing elit. Nullam dignissim convallis est.Quisque aliquam. Donec faucibus. </span></p></div>
+</div>
+</div>
+<div class="clearfix visible-xs-block">
+</div>
+<div class="post_column col-lg-3 col-md-3 col-sm-3 col-xs-12">
+<div class="ttr_Index_html_column41">
+<div class="html_content" style="font-family:Times New Roman;font-size:12px;"><p style="margin:20px 0px 0px 0px;font-family:Times New Roman;font-size:12px;"><img src="images/855.jpg" style="margin:0px 0px 0px 0px;font-family:Times New Roman;font-size:12px;" /></p><p style="margin:20px 0px 0px 0px;text-align:Center;font-family:Times New Roman;font-size:12px;"><span style="font-family:&quot;Microsoft Tai Le&quot;;font-size:16px;">Második</span></p><p style="margin:10px 0px 0px 0px;text-align:Center;font-family:Times New Roman;font-size:12px;"><span style="font-family:&quot;Microsoft Tai Le&quot;;font-size:14px;color:#B3B3B3;">Lorem ipsum dolor sit amet, test link adipiscing elit. Nullam dignissim convallis est. Quisque aliquam. Donec faucibus. </span></p></div>
+</div>
+</div>
+<div class="clearfix visible-xs-block">
+</div>
+<div class="post_column col-lg-3 col-md-3 col-sm-3 col-xs-12">
+<div class="ttr_Index_html_column42">
+<div class="html_content" style="font-family:Times New Roman;font-size:12px;"><p style="margin:20px 0px 0px 0px;font-family:Times New Roman;font-size:12px;"><img src="images/856.jpg" style="margin:0px 0px 0px 0px;font-family:Times New Roman;font-size:12px;" /></p><p style="margin:20px 0px 0px 0px;text-align:Center;font-family:Times New Roman;font-size:12px;"><span style="font-family:&quot;Microsoft Tai Le&quot;;font-size:16px;">Harmadik</span></p><p style="margin:10px 0px 0px 0px;text-align:Center;font-family:Times New Roman;font-size:12px;"><span style="font-family:&quot;Microsoft Tai Le&quot;;font-size:14px;color:#B3B3B3;">Lorem ipsum dolor sit amet, test link adipiscing elitNullam dignissim convallis est. Quisque aliquam. Donec faucibus</span></p></div>
+</div>
+</div>
+<div class="clearfix visible-xs-block">
+</div>
+<div class="post_column col-lg-3 col-md-3 col-sm-3 col-xs-12">
+<div class="ttr_Index_html_column43">
+<div class="html_content" style="font-family:Times New Roman;font-size:12px;"><p style="margin:20px 0px 0px 0px;font-family:Times New Roman;font-size:12px;"><img src="images/857.jpg" style="margin:0px 0px 0px 0px;font-family:Times New Roman;font-size:12px;" /></p><p style="margin:20px 0px 0px 0px;text-align:Center;font-family:Times New Roman;font-size:12px;"><span style="font-family:&quot;Microsoft Tai Le&quot;;font-size:16px;">Negyedik</span></p><p style="margin:10px 0px 0px 0px;text-align:Center;font-family:Times New Roman;font-size:12px;"><span style="font-family:&quot;Microsoft Tai Le&quot;;font-size:14px;color:#B3B3B3;">Lorem ipsum dolor sit amet, test link adipiscing elit. Nullam dignissim convallis est. Quisque aliquam. Donec faucibus.</span></p></div>
+</div>
+</div>
+<div class="clearfix visible-lg-block visible-sm-block visible-md-block visible-xs-block">
+</div>
+</div>
+<div style="height:0px;width:0px;overflow:hidden;-webkit-margin-top-collapse: separate;"></div>
+</div>
+</div>
+<div style="clear:both">
+</div>
+</div>
+<div style="height:0px;width:0px;overflow:hidden;"></div>
+<footer id="ttr_footer">
+<div class="ttr_footer_bottom_footer">
+<div class="ttr_footer_bottom_footer_inner">
+<div id="ttr_footer_designed_by_links">
+
+</div>
+<div class="ttr_footer_rss">
+</div>
+</div>
+</div>
+</footer>
+<div style="height:0px;width:0px;overflow:hidden;-webkit-margin-bottom-collapse: separate;"></div>
+</div>
+</body>
+</html>
